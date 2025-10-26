@@ -12,5 +12,5 @@ def bank(a):
     else:
         return f"$100"
 
-if _name=="main_":
+if __name__=="__main__":
     main()

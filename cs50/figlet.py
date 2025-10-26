@@ -1,6 +1,19 @@
 import sys
-import pyfiglet
+import subprocess
+import importlib
 import random
+
+try:
+    pyfiglet = importlib.import_module('pyfiglet')
+except ImportError:
+    # Attempt to install pyfiglet automatically
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "pyfiglet"])
+        pyfiglet = importlib.import_module('pyfiglet')
+    except Exception:
+        print("Error: required package 'pyfiglet' is not installed and automatic installation failed.")
+        print(f"Please install it manually: {sys.executable} -m pip install pyfiglet")
+        sys.exit(1)
 
 def get_random_font():
     """ Return a random font from pyfiglet fonts. """
@@ -35,5 +48,5 @@ def main():
     # Generate and print the formatted text
     print(figlet.renderText(text))
 
-if _name_ == '_main_':
-    main()
+if __name__ == '__main__':
+    main()

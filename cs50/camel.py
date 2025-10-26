@@ -1,5 +1,5 @@
-a=input("CamelCase  :")
-print("snake_case  :",end="")
+a=input("CamelCase: ")
+print("snake_case: ",end="")
 for i in a:
     if i.islower():
         print(i,end="")
